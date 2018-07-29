@@ -8,18 +8,35 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.xdx.textviewdemo.marqueeview.MarqueeCleanClickListener;
 import com.xdx.textviewdemo.marqueeview.MarqueeTextView;
 import com.xdx.textviewdemo.marqueeview.MarqueeTextViewClickListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.bingoogolapple.bgabanner.BGABanner;
+
 
 public class MainActivity extends AppCompatActivity {
-
+    private List<String> bannerList = new ArrayList<>();
     private MarqueeTextView marqueeTextView;
     private SharedPreferences sharedPreferences;
     private Boolean first_run;
+    private BGABanner mBannerGuideContent;
+
+    public static final String[] IMAGES = {
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526921235090&di=792f691f520d6e69010e79ca0a480a6a&imgtype=0&src=http%3A%2F%2Ffile3.youboy.com%2Fd%2F168%2F85%2F98%2F1%2F594351s.jpg"
+            , "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526921321244&di=9f2dc0ef61aaf38878f0af2adbbe7f23&imgtype=0&src=http%3A%2F%2Fimg1.sooshong.com%2Fpics%2F201703%2F8%2F20173810101927.jpg"
+
+            , "http://cdnq.duitang.com/uploads/blog/201309/16/20130916142913_tkxNZ.jpeg"
+            , "http://img5.imgtn.bdimg.com/it/u=768245655,2207102486&fm=21&gp=0.jpg", "http://img5.imgtn.bdimg.com/it/u=893152607,157679322&fm=21&gp=0.jpg"
+            , "http://cdnq.duitang.com/uploads/blog/201309/16/20130916142913_tkxNZ.jpeg"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +53,47 @@ public class MainActivity extends AppCompatActivity {
         set();
          sharedPreferences = getSharedPreferences("isKill",0);
          first_run = sharedPreferences.getBoolean("Kill",true);
+         initBanner();
+         initData();
 
 
     }
+
+    public void initBanner() {
+        bannerList.clear();
+        for (int i = 0; i < 3; i++) {
+            bannerList.add(IMAGES[i]);
+        }
+        mBannerGuideContent = (BGABanner) findViewById(R.id.banner_guide_content);//banner图
+        mBannerGuideContent.setData(bannerList, null);
+    }
+
+
+    /**
+     * 初始化轮播图
+     * thumbnail(0.1f)加载缩略图
+     * dontAnimate 不加载默认动画
+     */
+    public void initData() {
+        mBannerGuideContent.setAdapter(new BGABanner.Adapter() {
+            @Override
+            public void fillBannerItem(BGABanner banner, View view, Object model, int position) {
+                    Glide.with(MainActivity.this).load(model).
+                            placeholder(R.color.color_9c9c9c).error(R.color.color_9c9c9c).
+                            dontAnimate().thumbnail(0.1f).into((ImageView) view);
+
+            }
+        });
+        mBannerGuideContent.setDelegate(new BGABanner.Delegate<ImageView, String>() {
+            @Override
+            public void onBannerItemClick(BGABanner banner, ImageView itemView, String model, int position) {
+                Toast.makeText(banner.getContext(), "点击了第" + position+"张图片", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
 
     /**
      * fsdfsdf

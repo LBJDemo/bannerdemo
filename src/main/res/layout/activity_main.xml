@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.xdx.testapplication.MainActivity">
+    >
 
-
-    <widget.marqueeview.MarqueeTextView
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/banner_guide_content"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:banner_pageChangeDuration="800"
+        app:banner_pointAutoPlayInterval="4000"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+        app:banner_pointTopBottomMargin="7dp"
+        app:banner_transitionEffect="alpha" />
+    <com.xdx.textviewdemo.marqueeview.MarqueeTextView
         android:id="@+id/mall_view_home_marquee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +27,7 @@
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sdfsfdsfsdf"/>
+        android:text="GO"/>
     <!--<TextView-->
         <!--android:id="@+id/tv"-->
         <!--android:layout_width="wrap_content"-->

@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import widget.marqueeview.MarqueeCleanClickListener;
-import widget.marqueeview.MarqueeTextView;
-import widget.marqueeview.MarqueeTextViewClickListener;
+import com.xdx.textviewdemo.marqueeview.MarqueeTextView;
+
 
 public class TestActivity extends AppCompatActivity {
 
