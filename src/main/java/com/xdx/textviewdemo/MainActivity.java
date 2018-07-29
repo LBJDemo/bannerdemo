@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
          sharedPreferences = getSharedPreferences("isKill",0);
          first_run = sharedPreferences.getBoolean("Kill",true);
 
+
          initBanner();
          initData();
 
