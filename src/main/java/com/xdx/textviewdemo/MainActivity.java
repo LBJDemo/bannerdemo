@@ -21,9 +21,6 @@ import java.util.List;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
 
-
-
-
 public class MainActivity extends AppCompatActivity {
     private List<String> bannerList = new ArrayList<>();
     private MarqueeTextView marqueeTextView;
