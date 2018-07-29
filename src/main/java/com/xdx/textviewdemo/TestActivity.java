@@ -7,6 +7,7 @@ import android.util.Log;
 import com.xdx.textviewdemo.marqueeview.MarqueeTextView;
 
 
+
 public class TestActivity extends AppCompatActivity {
 
     private MarqueeTextView marqueeTextView;
